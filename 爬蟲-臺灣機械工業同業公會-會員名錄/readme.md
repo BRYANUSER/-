@@ -8,7 +8,6 @@
 
 ### request
 建立各種 HTTP 請求，從網頁伺服器上取得想要的資料
-####  範例代碼////////////
 
 [request參考資料](https://blog.gtwang.org/programming/python-requests-module-tutorial/)
 
@@ -133,7 +132,7 @@ while True :
     layer_1 = soup_1.find_all('a', { 'class': ['product-link','product-link2']})
     
     for tag_1 in layer_1:
-		#其他爬蟲程式碼放這裡
+	#其他爬蟲程式碼放這裡
 	
     #...
 ```
@@ -155,12 +154,49 @@ while True :
         soup_2 = BeautifulSoup(request_2.text,"html.parser")        
         layer_2 = soup_2.find_all('a', { 'class': 'product-link'})        
         for tag_2 in layer_2:
-			#其他爬蟲程式碼放這裡
+		#其他爬蟲程式碼放這裡
     #...
 ```
 <br>進入第三層頁面，我們可以觀察到此頁面出現了頁數選項
-<br>觀察第三層頁面的html，我們可以看到&lt;a&gt;.............頁數與
-//////
+<br>觀察第三層頁面的html
+<br>我們可以看到標籤&lt;a&gt之下並沒有連結網址，而是屬性onclick，這是滑鼠點擊事件，屬於javascript語法
+<br>![image](readme_data/7.png)
+
+<br>通常可以用python來模擬點擊，但我們這裡先來觀察一下不同頁數的網址
+<br>原始第三層頁面網址
+<br>![image](readme_data/8-1.png)
+<br>第三層頁面的第一頁網址
+<br>![image](readme_data/8-2.png)
+<br>第三層頁面的第二頁網址
+<br>![image](readme_data/8-3.png)
+
+<br>藉由上面三個不同網址，我們可以觀察出網址的規律
+<br>第三層頁面不同頁數網址為原始第三層頁面的相對路徑中間加上: **?on=該頁數&**
+<br>如此以來，只要得到頁數的大小，就可以再利用for迴圈遍歷所有的第三層頁面的頁數
+
+<br>標籤為&lt;span&gt;且屬性class的值為page的html語句含有頁數
+<br>![image](readme_data/6.png)
+
+<br>將第三層頁面解析後
+<br>利用find_all()，找出標籤為&lt;span&gt;且屬性class的值為page的html語句
+<br>接下來我們計算總共有多少頁數，存到變數page_count中
+``` python
+while True :
+	#...         
+        for tag_2 in layer_2:
+	    layer_2_name = Text_Clean(tag_2.text)    #別忘了記錄第二層產品分類名稱
+            Current_3 = 'http://www.tami.org.tw/category/'+tag_2['href']
+            request_3 = requests.get(Current_3)
+            soup_3 = BeautifulSoup(request_3.text,"html.parser")
+            
+	    page_count = 0
+            for tag_3 in soup_3.find_all('span', { 'class': 'page'}):#可直接用len(soup_3.find_all('span', { 'class': 'page'}))
+		page_count += 1 ;
+		
+	    split = tag_2['href'].split("?")
+	    #其他爬蟲程式碼放這裡
+    #...
+```
 
 
 

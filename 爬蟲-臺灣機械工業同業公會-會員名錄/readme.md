@@ -79,7 +79,7 @@ def Text_Clean(text):
 <br>![image](readme_data/2.png)
 
 <br>尋找**下一頁**圖示的標籤名稱
-<br>這時我們發現標籤&lt;a&gt;................
+<br>這時我們發現標籤&lt;a&gt;含有**下一頁**圖示以及該圖示連結的網址
 <br>![image](readme_data/3.png)
 
 <br>做一個回傳**下一頁**圖示連結的def
@@ -96,7 +96,7 @@ def Next_Image_link(Current):
                 return 'http://www.tami.org.tw/category/'+tag['href']   #確認後，回傳該標籤<a>的屬性href(網頁連結)
     return None
 ```
-<br>我們先定義目前網頁網址以及多個蒐集資料的空list
+<br>接下來定義目前網頁網址以及多個蒐集資料的空list
 ```python
 Current_1 = "http://www.tami.org.tw/category/product-new1.php"
 layer_1_list,layer_2_list,name,company_phone,company_fax,company_address,factory_phone,factory_fax,factory_address,company_url,capital,email,employee,main_product = [],[],[],[],[],[],[],[],[],[],[],[],[],[]
@@ -117,8 +117,11 @@ while True :
 
 <br>搞定第一層頁面的換頁功能後，我們接下來要進入第二層頁面
 <br>如何進入第二層頁面呢?一樣先來觀察第一層頁面的html
-<br>我們可以看到&lt;a&gt;.............
+<br>我們可以看到&lt;a&gt;含有進入第三層的連結
+<br>(注意:淺色背景、深色背景的&lt;a&gt;的屬性class不同，
+<br>屬性class的值分別為product-link、product-link2)
 <br>![image](readme_data/4.png)
+
 <br>我們將第一層頁面解析後，尋找............，存入layer_1 
 <br>利用for迴圈遍歷所有第一層頁面到第二層頁面的連結
 ``` python
@@ -137,6 +140,7 @@ while True :
 <br>因此我們直接觀察如何進入第三層頁面就好，一樣觀察第二層頁面的html
 <br>我們可以看到&lt;a&gt;.............
 <br>![image](readme_data/5.png)
+
 <br>我們將第二層頁面解析後，尋找............，存入layer_2 
 <br>利用for迴圈遍歷所有第二層頁面到第三層頁面的連結
 ``` python

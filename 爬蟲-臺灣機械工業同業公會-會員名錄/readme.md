@@ -122,7 +122,8 @@ while True :
 <br>屬性class的值分別為product-link、product-link2)
 <br>![image](readme_data/4.png)
 
-<br>我們將第一層頁面解析後，尋找............，存入layer_1 
+<br>我們將第一層頁面解析後
+<br>利用find_all(')，找出標籤為&lt;a&gt;且屬性class的值分別為product-link或product-link2的html語句，存入layer_1 
 <br>利用for迴圈遍歷所有第一層頁面到第二層頁面的連結
 ``` python
 while True :
@@ -138,10 +139,11 @@ while True :
 ```
 <br>進入第二層頁面，我們可以觀察到此頁面並沒有換頁的選項
 <br>因此我們直接觀察如何進入第三層頁面就好，一樣觀察第二層頁面的html
-<br>我們可以看到&lt;a&gt;.............
+<br>我們可以看到標籤為&lt;a&gt;且屬性class的值為product-link的html語句有我們需要的連結
 <br>![image](readme_data/5.png)
 
-<br>我們將第二層頁面解析後，尋找............，存入layer_2 
+<br>我們將第二層頁面解析後
+<br>利用find_all(')，找出標籤為&lt;a&gt;且屬性class的值為product-link的html語句，存入layer_2 
 <br>利用for迴圈遍歷所有第二層頁面到第三層頁面的連結
 ``` python
 while True :

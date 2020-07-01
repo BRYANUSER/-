@@ -77,8 +77,8 @@ def Text_Clean(text):
 <br>接著開啟F12 ( 或Ctrl + Shift + I )，尋找要爬的特定內容
 <br>我們觀察一下網站格式，這時我們看到了**下一頁**的圖示
 <br>![image](readme_data/2.png)
-<br>尋找**下一頁**圖示的標籤名稱
 
+<br>尋找**下一頁**圖示的標籤名稱
 <br>這時我們發現標籤&lt;a&gt;................
 <br>![image](readme_data/3.png)
 

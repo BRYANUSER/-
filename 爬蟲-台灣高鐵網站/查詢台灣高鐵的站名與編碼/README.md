@@ -18,6 +18,22 @@
 
 <br>請點開上述gif檔的紅圈內的&lt;select ...&gt;標籤，結果如下。
 <br>![image](readme_data/4.png)
-
-從上述可以看到可以在&lt;select id="select_location01"...&gt;標籤內看到除了出發站名稱，
+<br>從上述可以看到可以在&lt;select id="select_location01"...&gt;標籤內看到除了出發站名稱，
 &lt;option&gt;標籤內的value有一個編碼，這一個編碼就是高鐵站名的編碼。
+
+<br><br>程式碼實現:
+``` python
+#爬取台灣高鐵站名與編碼
+import requests, bs4
+
+url = 'https://www.thsrc.com.tw/ArticleContent/a3b630bb-1066-4352-a1ef-58c7b4e8ef7c'
+htmlFile = requests.get(url)
+objSoup = bs4.BeautifulSoup(htmlFile.text, 'lxml')
+stations = objSoup.find('select', id='select_location01').find_all('option')
+
+print("高鐵站名與編碼:")
+for station in stations:
+    print (station.text.strip(), " : ", station['value'])   
+```
+<br><br>執行結果:
+<br>![image](readme_data/5.png)

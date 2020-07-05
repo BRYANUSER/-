@@ -19,5 +19,5 @@
 <br>請點開上述gif檔的紅圈內的&lt;select ...&gt;標籤，結果如下。
 <br>![image](readme_data/4.png)
 
-從上述可以看到可以在&lt;select id="StartStation"...&gt;標籤內看到除了出發站名稱，
+從上述可以看到可以在&lt;select id="select_location01"...&gt;標籤內看到除了出發站名稱，
 &lt;option&gt;標籤內的value有一個編碼，這一個編碼就是高鐵站名的編碼。
